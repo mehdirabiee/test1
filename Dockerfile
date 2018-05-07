@@ -31,7 +31,7 @@ WORKDIR $CAFFE_ROOT
 # https://github.com/docker/hub-feedback/issues/460
 ENV CLONE_TAG=1.0
 
-RUN git clone -b ${CLONE_TAG} --depth 1 https://github.com/BVLC/caffe.git temp1 && \
+RUN git clone https://github.com/BVLC/caffe temp1 && \
     git clone https://github.com/hujie-frank/SENet temp2 && \
 	mv temp1/* ./ && \
 	cp -r temp2/* ./ && \
