@@ -19,7 +19,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         protobuf-compiler \
         python-dev \
         python-numpy \
-        python-pip=9.0.3 \
+#		python-pip \
         python-setuptools \
         python-scipy && \
     rm -rf /var/lib/apt/lists/*
