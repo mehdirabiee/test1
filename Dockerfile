@@ -19,7 +19,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         protobuf-compiler \
         python-dev \
         python-numpy \
-        python-pip \
+        python-pip=8.1.1 \
         python-setuptools \
         python-scipy && \
     rm -rf /var/lib/apt/lists/*
@@ -35,6 +35,7 @@ RUN git clone -b ${CLONE_TAG} --depth 1 https://github.com/BVLC/caffe.git temp1 
     git clone https://github.com/hujie-frank/SENet temp2 && \
 	mv temp1/* ./ && \
 	cp -r temp2/* ./ && \
+	rm -r temp2 && \
     pip install --upgrade pip && \
     cd python && for req in $(cat requirements.txt) pydot; do pip install $req; done && cd .. && \
     mkdir build && cd build && \
