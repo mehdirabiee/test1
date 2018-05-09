@@ -31,10 +31,13 @@ WORKDIR /opt
 RUN mkdir caffe && \
 	git clone https://github.com/BVLC/caffe temp1 && \
     git clone https://github.com/hujie-frank/SENet temp2 && \
+	git clone https://github.com/mehdirabiee/test1 temp3 && \
 	mv temp1/* caffe/ && \
 	cp -r temp2/* caffe/ && \
+	cp -r temp3/* caffe/ && \
 	rm -r temp2 && \
 	rm -r temp2 && \
+	rm -r temp3 && \
     pip install --upgrade pip && \
     cd caffe/python && \
 	pip install -r requirements.txt && \
