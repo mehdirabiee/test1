@@ -38,7 +38,8 @@ RUN mkdir caffe && \
 	rm -rf temp1 && \
 	rm -rf temp2 && \
 	rm -rf temp3 && \
-    #pip install --upgrade pip && \
+    pip install --upgrade pip && \
+	hash -r pip && \
     cd caffe/python && \
 	pip install -r requirements.txt && \
 	cd .. && \
