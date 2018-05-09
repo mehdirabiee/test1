@@ -35,9 +35,9 @@ RUN mkdir caffe && \
 	mv temp1/* caffe/ && \
 	cp -r temp2/* caffe/ && \
 	cp -r temp3/* caffe/ && \
-	rm -r temp2 && \
-	rm -r temp2 && \
-	rm -r temp3 && \
+	rm -rf temp1 && \
+	rm -rf temp2 && \
+	rm -rf temp3 && \
     pip install --upgrade pip && \
     cd caffe/python && \
 	pip install -r requirements.txt && \
