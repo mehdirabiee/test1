@@ -19,25 +19,26 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         protobuf-compiler \
         python-dev \
         python-numpy \
-#		python-pip \
+		python-pip \
         python-setuptools \
         python-scipy && \
     rm -rf /var/lib/apt/lists/*
 
 ENV CAFFE_ROOT=/opt/caffe
-WORKDIR $CAFFE_ROOT
+WORKDIR /opt
 
-# FIXME: use ARG instead of ENV once DockerHub supports this
-# https://github.com/docker/hub-feedback/issues/460
-ENV CLONE_TAG=1.0
 
-RUN git clone https://github.com/BVLC/caffe temp1 && \
+RUN mkdir caffe && \
+	git clone https://github.com/BVLC/caffe temp1 && \
     git clone https://github.com/hujie-frank/SENet temp2 && \
-	mv temp1/* ./ && \
-	cp -r temp2/* ./ && \
+	mv temp1/* caffe/ && \
+	cp -r temp2/* caffe/ && \
+	rm -r temp2 && \
 	rm -r temp2 && \
     pip install --upgrade pip && \
-    cd python && for req in $(cat requirements.txt) pydot; do pip install $req; done && cd .. && \
+    cd caffe/python && \
+	pip install -r requirements.txt && \
+	cd .. && \
     mkdir build && cd build && \
     cmake -DCPU_ONLY=1 .. && \
     make -j"$(nproc)"
