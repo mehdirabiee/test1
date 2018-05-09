@@ -19,7 +19,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         protobuf-compiler \
         python-dev \
         python-numpy \
-		#python-pip \
+		python-pip \
         python-setuptools \
         python-scipy && \
     rm -rf /var/lib/apt/lists/*
@@ -38,7 +38,7 @@ RUN mkdir caffe && \
 	rm -rf temp1 && \
 	rm -rf temp2 && \
 	rm -rf temp3 && \
-    pip install --upgrade pip && \
+    #pip install --upgrade pip && \
     cd caffe/python && \
 	pip install -r requirements.txt && \
 	cd .. && \
